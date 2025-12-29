@@ -62,7 +62,7 @@ def calculate_speedup_efficiency(df):
 
 
 if __name__ == "__main__":
-    IMAGE_DIR = "pizza"
+    IMAGE_DIR = "images"
     WORKER_COUNTS = [1, 2, 4]  # Adjust based on your VM's vCPUs
     
     # Run benchmark

@@ -86,7 +86,7 @@ def run_concurrent_futures(image_dir, output_dir, num_workers):
 
 if __name__ == "__main__":
     # Test with different worker counts
-    IMAGE_DIR = "pizza"
+    IMAGE_DIR = "images"
     OUTPUT_BASE = "output/concurrent_futures"
     
     for workers in [1, 2, 4]:
