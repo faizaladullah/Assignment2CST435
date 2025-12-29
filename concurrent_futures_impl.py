@@ -89,7 +89,7 @@ if __name__ == "__main__":
     IMAGE_DIR = "images"
     OUTPUT_BASE = "output/concurrent_futures"
     
-    for workers in [1, 2, 4, 8, 16]:
+    for workers in [1, 2, 4, 8]:
         output_dir = f"{OUTPUT_BASE}/{workers}_workers"
         result = run_concurrent_futures(IMAGE_DIR, output_dir, workers)
         print(f"Result: {result}\n")

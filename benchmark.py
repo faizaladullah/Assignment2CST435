@@ -63,7 +63,7 @@ def calculate_speedup_efficiency(df):
 
 if __name__ == "__main__":
     IMAGE_DIR = "images"
-    WORKER_COUNTS = [1, 2, 4, 8, 16]  # Adjust based on your VM's vCPUs
+    WORKER_COUNTS = [1, 2, 4, 8]  # Adjust based on your VM's vCPUs
     
     # Run benchmark
     results_df = run_comprehensive_benchmark(IMAGE_DIR, WORKER_COUNTS)
