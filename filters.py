@@ -163,4 +163,6 @@ def apply_all_filters(image_path, output_dir):
             'success': False,
             'error': str(e)
         }
+
+
         
