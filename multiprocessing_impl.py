@@ -82,10 +82,9 @@ if __name__ == "__main__":
     IMAGE_DIR = "images"
     OUTPUT_BASE = "output/multiprocessing"
     
-    for workers in [1, 2, 4]:
+    for workers in [1, 2, 4, 8, 16]:
         output_dir = f"{OUTPUT_BASE}/{workers}_workers"
         result = run_multiprocessing(IMAGE_DIR, output_dir, workers)
         print(f"Result: {result}\n")
 
 
-        
