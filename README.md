@@ -43,9 +43,13 @@ python3 benchmark.py
 
 sudo apt-get install zip -y
 zip -r output.zip output/
+
 Download Path: /home/"username"/Assignment2CST435/output.zip
 
 to download Worker 2 outputs for both methods
+
+sudo apt-get install zip -y
+
 - Zip Worker 2 results for Multiprocessing
 
 zip -r mp_worker2.zip output/multiprocessing/2_workers/
