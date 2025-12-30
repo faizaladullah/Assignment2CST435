@@ -45,8 +45,17 @@ def run_multiprocessing(image_dir, output_dir, num_workers):
     start_time = time.time()
     
     # Create process pool and execute
+    results = []
+    completed = 0
     with mp.Pool(processes=num_workers) as pool:
-        results = pool.map(process_image_worker, worker_args)
+        # imap_unordered membolehkan kita dapat hasil satu demi satu
+        for result in pool.imap_unordered(process_image_worker, worker_args):
+            results.append(result)
+            completed += 1
+            
+            # Sekarang anda boleh buat Progress Indicator!
+            if completed % 1000 == 0 or completed == total_images:
+                print(f"Progress: {completed}/{total_images} images processed")
     
     # Calculate total time
     total_time = time.time() - start_time
