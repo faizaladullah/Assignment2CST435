@@ -1,4 +1,4 @@
-Installation & Setup
+- Installation & Setup
 1. System Update and Prerequisites
 Update the local package index and install Python 3 and Pip:
 
@@ -20,7 +20,7 @@ pip install pillow numpy pandas matplotlib
 
 pip3 install scipy
 
-Execution Guide
+- Execution Guide
 1. Clone the Repository
    
 sudo apt-get install git -y
@@ -39,20 +39,20 @@ Execute the comprehensive benchmark for both multiprocessing and concurrent.futu
 python3 benchmark.py
 
 
-To download all processed images from GCP to your local machine:
+- To download all processed images from GCP to your local machine:
 
 sudo apt-get install zip -y
 zip -r output.zip output/
 Download Path: /home/"username"/Assignment2CST435/output.zip
 
 to download Worker 2 outputs for both methods
-# Zip Worker 2 results for Multiprocessing
+- Zip Worker 2 results for Multiprocessing
 
 zip -r mp_worker2.zip output/multiprocessing/2_workers/
 
 Download Path: /home/"username"/Assignment2CST435/mp_worker2.zip
 
-# Zip Worker 2 results for Concurrent.Futures
+- Zip Worker 2 results for Concurrent.Futures
 
 zip -r cf_worker2.zip output/concurrent_futures/2_workers/
 
