@@ -46,18 +46,32 @@ zip -r output.zip output/
 
 Download Path: /home/"username"/Assignment2CST435/output.zip
 
-to download Worker 2 outputs for both methods
+- to download sample Worker 2 outputs for both methods
 
 sudo apt-get install zip -y
 
-- Zip Worker 2 results for Multiprocessing
+1. Sample from Multiprocessing Results
+Bash
 
-zip -r mp_worker2.zip output/multiprocessing/2_workers/
+-Create a temporary directory for samples
+mkdir -p mp_sample_output
 
-Download Path: /home/"username"/Assignment2CST435/mp_worker2.zip
+-Copy the first 50 processed images (approx. 10 original sets)
+cp $(ls output/multiprocessing/2_workers/*.jpg | head -n 50) mp_sample_output/
 
-- Zip Worker 2 results for Concurrent.Futures
+- Compress the sample folder
+zip -r mp_sample.zip mp_sample_output/
+Download Path: /home/mohamadfaizal1656/Assignment2CST435/mp_sample.zip
 
-zip -r cf_worker2.zip output/concurrent_futures/2_workers/
+2. Sample from Concurrent.Futures Results
+Bash
 
-Download Path: /home/"username"/Assignment2CST435/cf_worker2.zip
+-Create a temporary directory for samples
+mkdir -p cf_sample_output
+
+-Copy the first 50 processed images
+cp $(ls output/concurrent_futures/2_workers/*.jpg | head -n 50) cf_sample_output/
+
+-Compress the sample folder
+zip -r cf_sample.zip cf_sample_output/
+Download Path: /home/mohamadfaizal1656/Assignment2CST435/cf_sample.zip
