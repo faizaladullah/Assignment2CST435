@@ -61,7 +61,7 @@ cp $(ls output/multiprocessing/2_workers/*.jpg | head -n 50) mp_sample_output/
 
 - Compress the sample folder
 zip -r mp_sample.zip mp_sample_output/
-Download Path: /home/mohamadfaizal1656/Assignment2CST435/mp_sample.zip
+Download Path: /home/"username"/Assignment2CST435/mp_sample.zip
 
 2. Sample from Concurrent.Futures Results
 Bash
@@ -74,4 +74,4 @@ cp $(ls output/concurrent_futures/2_workers/*.jpg | head -n 50) cf_sample_output
 
 -Compress the sample folder
 zip -r cf_sample.zip cf_sample_output/
-Download Path: /home/mohamadfaizal1656/Assignment2CST435/cf_sample.zip
+Download Path: /home/"username"/Assignment2CST435/cf_sample.zip
