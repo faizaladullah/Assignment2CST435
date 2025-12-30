@@ -14,7 +14,8 @@ source venv/bin/activate
 3. Install Dependencies
 Install the required libraries for image processing, numerical calculations, and visualization:
 
-pip install pillow numpy pandas matplotlib
+pip install pillow numpy pandas matplotlib  
+
 pip3 install scipy
 
 Execution Guide
