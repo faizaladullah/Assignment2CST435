@@ -25,7 +25,7 @@ Execution Guide
    
 sudo apt-get install git -y
 
-git clone <GITHUB_URL>
+git clone https://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@github.com/faizaladullah/Assignment2CST435.git
 
 cd Assignment2CST435
 
