@@ -3,6 +3,7 @@ Installation & Setup
 Update the local package index and install Python 3 and Pip:
 
 sudo apt update
+
 sudo apt install -y python3-pip python3-venv git
 
 2. Virtual Environment Setup
