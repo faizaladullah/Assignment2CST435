@@ -10,6 +10,7 @@ sudo apt install -y python3-pip python3-venv git
 Create and activate a virtual environment to manage dependencies:
 
 python3 -m venv venv
+
 source venv/bin/activate
 
 3. Install Dependencies
