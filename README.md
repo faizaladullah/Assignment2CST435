@@ -22,13 +22,14 @@ pip3 install scipy
 
 Execution Guide
 1. Clone the Repository
+   
 sudo apt-get install git -y
 
 git clone <GITHUB_URL>
 
 cd Assignment2CST435
 
-3. Create results directory
+2. Create results directory
 
 mkdir -p results
 
