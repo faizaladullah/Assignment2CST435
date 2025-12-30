@@ -1,5 +1,6 @@
 # filters.py
 from PIL import Image
+from scipy.signal import convolve2d as scipy_convolve2d
 import numpy as np
 
 def grayscale_conversion(image):
@@ -37,22 +38,23 @@ def gaussian_blur(image):
 
 
 def convolve2d(image, kernel):
-    """Helper function for 2D convolution"""
-    h, w = image.shape
-    kh, kw = kernel.shape
-    pad_h, pad_w = kh // 2, kw // 2
+    # """Helper function for 2D convolution"""
+    # h, w = image.shape
+    # kh, kw = kernel.shape
+    # pad_h, pad_w = kh // 2, kw // 2
     
-    # Pad image
-    padded = np.pad(image, ((pad_h, pad_h), (pad_w, pad_w)), mode='edge')
-    output = np.zeros_like(image, dtype=np.float32)
+    # # Pad image
+    # padded = np.pad(image, ((pad_h, pad_h), (pad_w, pad_w)), mode='edge')
+    # output = np.zeros_like(image, dtype=np.float32)
     
-    for i in range(h):
-        for j in range(w):
-            output[i, j] = np.sum(
-                padded[i:i+kh, j:j+kw] * kernel
-            )
+    # for i in range(h):
+    #     for j in range(w):
+    #         output[i, j] = np.sum(
+    #             padded[i:i+kh, j:j+kw] * kernel
+    #         )
     
-    return output
+    # return output
+    return scipy_convolve2d(image, kernel, mode='same', boundary='symm')
 
 
 def edge_detection(image):
@@ -165,4 +167,3 @@ def apply_all_filters(image_path, output_dir):
         }
 
 
-        
