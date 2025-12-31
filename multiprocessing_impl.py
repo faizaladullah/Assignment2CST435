@@ -52,7 +52,7 @@ def run_multiprocessing(image_dir, output_dir, num_workers):
             results.append(result)
             completed += 1
             
-            if completed % 1000 == 0 or completed == total_images:
+            if completed % 500 == 0 or completed == total_images:
                 print(f"Progress: {completed}/{total_images} images processed")
     
     # Calculate total time
