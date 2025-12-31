@@ -38,20 +38,17 @@ def run_concurrent_futures(image_dir, output_dir, num_workers):
     
     # Use ProcessPoolExecutor
     with ProcessPoolExecutor(max_workers=num_workers) as executor:
-        # Submit all tasks
         future_to_image = {
             executor.submit(apply_all_filters, str(img_path), output_dir): img_path
             for img_path in image_paths
         }
         
-        # Process completed tasks
         completed = 0
         for future in as_completed(future_to_image):
             result = future.result()
             results.append(result)
             completed += 1
             
-            # Progress indicator
             if completed % 1000 == 0 or completed == total_images:
                 print(f"Progress: {completed}/{total_images} images processed")
     
@@ -61,28 +58,37 @@ def run_concurrent_futures(image_dir, output_dir, num_workers):
     # Analyze results
     successful = sum(1 for r in results if r['success'])
     failed = total_images - successful
-    avg_time_per_image = sum(r['duration'] for r in results) / total_images
+    
+    # Use wall clock time
+    avg_time_per_image = total_time / total_images 
+    
+    # Optional: Calculate total CPU time for analysis
+    total_cpu_time = sum(r['duration'] for r in results)
+    cpu_utilization = (total_cpu_time / (total_time * num_workers)) * 100
     
     print(f"\n{'='*60}")
     print(f"RESULTS:")
-    print(f"Total Time: {total_time:.4f} seconds")
+    print(f"Total Wall Clock Time: {total_time:.4f} seconds")
+    print(f"Total CPU Time (all workers): {total_cpu_time:.4f} seconds")
     print(f"Images Processed: {successful}/{total_images}")
     print(f"Failed: {failed}")
-    print(f"Average Time per Image: {avg_time_per_image:.4f}s")
+    print(f"Average Time per Image: {avg_time_per_image:.4f}s") 
     print(f"Throughput: {total_images/total_time:.2f} images/second")
+    print(f"CPU Utilization: {cpu_utilization:.2f}%")
     print(f"{'='*60}\n")
     
     return {
         'method': 'concurrent.futures',
         'num_workers': num_workers,
         'total_time': total_time,
+        'total_cpu_time': total_cpu_time,  
         'total_images': total_images,
         'successful': successful,
         'failed': failed,
-        'avg_time_per_image': avg_time_per_image,
-        'throughput': total_images / total_time
+        'avg_time_per_image': avg_time_per_image,  
+        'throughput': total_images / total_time,
+        'cpu_utilization': cpu_utilization 
     }
-
 
 if __name__ == "__main__":
     # Test with different worker counts
