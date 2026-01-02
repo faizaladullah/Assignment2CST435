@@ -1,77 +1,111 @@
-- Installation & Setup
-1. System Update and Prerequisites
-Update the local package index and install Python 3 and Pip:
+# ============================================================
+# CST435 - Assignment 2
+# Parallel Image Processing Benchmark
+# ============================================================
+# This script performs:
+# 1. System setup
+# 2. Virtual environment creation
+# 3. Dependency installation
+# 4. Benchmark execution
+# 5. Output compression
+# 6. Sample extraction for Worker 2
+# ============================================================
 
+
+# -------------------------------
+# STEP 1: Update system packages
+# -------------------------------
+# Ensures package lists are up to date
 sudo apt update
 
-sudo apt install -y python3-pip python3-venv git
+# Install required system tools:=
+sudo apt install -y python3-pip python3-venv git zip
 
-2. Virtual Environment Setup
-Create and activate a virtual environment to manage dependencies:
 
+# -------------------------------
+# STEP 2: Clone assignment repo
+# -------------------------------
+# Downloads the project source code
+git clone https://github.com/faizaladullah/Assignment2CST435.git
+
+# Enter project directory
+cd Assignment2CST435 
+
+
+# -----------------------------------
+# STEP 3: Python virtual environment
+# -----------------------------------
+# Create isolated Python environment
 python3 -m venv venv
 
-source venv/bin/activate
+# Activate virtual environment
+3source venv/bin/activate
 
-3. Install Dependencies
-Install the required libraries for image processing, numerical calculations, and visualization:
 
-pip install pillow numpy pandas matplotlib  
+# -----------------------------------
+# STEP 4: Install Python dependencies
+# -----------------------------------
+pip install pillow numpy pandas matplotlib scipy
 
-pip3 install scipy
 
-- Execution Guide
-1. Clone the Repository
-   
-sudo apt-get install git -y
-
-git clone https://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@github.com/faizaladullah/Assignment2CST435.git
-
-cd Assignment2CST435
-
-2. Create results directory
-
+# -----------------------------------
+# STEP 5: Prepare results directory
+# -----------------------------------
+# Stores benchmark timing results
 mkdir -p results
 
-3. Run Benchmark
-Execute the comprehensive benchmark for both multiprocessing and concurrent.futures across 1, 2, 4 and 8 workers:
-
+# -----------------------------------
+# STEP 6: Run benchmark experiment
+# -----------------------------------
+# Executes multiprocessing and concurrent.futures
+# using 1, 2, 4, and 8 workers
 python3 benchmark.py
 
 
-- To download all processed images from GCP to your local machine:
-
+# -----------------------------------
+# STEP 7: Compress ALL processed images
+# -----------------------------------
+# output/ contains all processed images
+# Zipped to allow easy download from GCP
 sudo apt-get install zip -y
 zip -r output.zip output/
 
-Download Path: /home/"username"/Assignment2CST435/output.zip
 
-- to download sample Worker 2 outputs for both methods
+# -----------------------------------
+# STEP 8: Sample Worker 2 outputs
+# -----------------------------------
+# Only 50 images are sampled to:
+# - reduce file size
+# - demonstrate correctness
+# - comply with submission limits
 
-sudo apt-get install zip -y
 
-1. Sample from Multiprocessing Results
-Bash
-
--Create a temporary directory for samples
+# --- Multiprocessing sample ---
 mkdir -p mp_sample_output
 
--Copy the first 50 processed images (approx. 10 original sets)
+# Copy first 50 processed images from 2 workers
 cp $(ls output/multiprocessing/2_workers/*.jpg | head -n 50) mp_sample_output/
 
-- Compress the sample folder
-zip -r mp_sample.zip mp_sample_output/
-Download Path: /home/"username"/Assignment2CST435/mp_sample.zip
+# Compress sample folder
+zip -r mp_sample.zip mp_sample_output
 
-2. Sample from Concurrent.Futures Results
-Bash
-
--Create a temporary directory for samples
+# --- Concurrent Futures sample ---
 mkdir -p cf_sample_output
 
--Copy the first 50 processed images
+# Copy first 50 processed images from 2 workers
 cp $(ls output/concurrent_futures/2_workers/*.jpg | head -n 50) cf_sample_output/
 
--Compress the sample folder
+# Compress sample folder
 zip -r cf_sample.zip cf_sample_output/
-Download Path: /home/"username"/Assignment2CST435/cf_sample.zip
+
+
+# -----------------------------------
+# STEP 9: Final confirmation
+# -----------------------------------
+echo "============================================"
+echo "Benchmark completed successfully."
+echo "Generated files:"
+echo " - output.zip      (all processed images)"
+echo " - mp_sample.zip   (multiprocessing samples)"
+echo " - cf_sample.zip   (concurrent futures samples)"
+echo "============================================"
