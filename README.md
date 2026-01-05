@@ -33,7 +33,7 @@ pip install pillow numpy pandas matplotlib scipy
 Clone the repository and enter the project directory.
 
 ```bash
-git clone [https://github.com/faizaladullah/Assignment2CST435.git](https://github.com/faizaladullah/Assignment2CST435.git)
+git clone https://github.com/faizaladullah/Assignment2CST435.git
 cd Assignment2CST435
 ```
 
@@ -51,6 +51,7 @@ Use the following commands to zip and download the results from GCP.
 ### Option A: Download ALL Results
 Compress the entire output folder:
 ```bash
+sudo apt-get install zip -y
 zip -r output.zip output/
 ```
 > **Download Path:** `/home/<username>/Assignment2CST435/output.zip`
